@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg: oklch(0.972 0.008 85);
+  --color-bg-elevated: oklch(0.988 0.005 85);
+  --color-ink: oklch(0.2 0.015 260);
+  --color-ink-soft: oklch(0.42 0.012 260);
+  --color-ink-muted: oklch(0.6 0.01 260);
+  --color-rule: oklch(0.86 0.012 80);
+  --color-accent: oklch(0.34 0.055 110);
+  --color-accent-soft: oklch(0.93 0.025 100);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --tracking-tightest: -0.04em;
+  --tracking-display: -0.02em;
+  --tracking-eyebrow: 0.18em;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01";
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+@utility hairline {
+  border-color: var(--color-rule);
 }
