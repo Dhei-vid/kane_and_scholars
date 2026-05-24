@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { SocialIcon } from "@/components/social-icons";
 import { Wordmark } from "@/components/wordmark";
-import { nav, site } from "@/lib/site-data";
+import { legalLinks, nav, site, socialLinks, telHref } from "@/lib/site-data";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -19,6 +20,27 @@ export function SiteFooter() {
             <p className="text-[0.78rem] tracking-wide text-ink-muted">
               Registered in England &amp; Wales · Company No. 14582033
             </p>
+            <div>
+              <p className="eyebrow mb-3">Follow us</p>
+              <ul className="flex items-center gap-2">
+                {socialLinks.map((item) => (
+                  <li key={item.network}>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.label}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border hairline border-rule/80 text-ink-soft hover:text-ink hover:border-accent transition-colors duration-300"
+                    >
+                      <SocialIcon
+                        network={item.network}
+                        className="h-[1.05rem] w-[1.05rem]"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div className="md:col-span-3">
@@ -39,26 +61,57 @@ export function SiteFooter() {
 
           <div className="md:col-span-4 space-y-4">
             <p className="eyebrow">Get in touch</p>
-            <a
-              href={`mailto:${site.email}`}
-              className="block text-[1.05rem] font-display text-ink hover:text-accent transition-colors"
-            >
-              {site.email}
-            </a>
-            <p className="text-[0.92rem] text-ink-soft">{site.phone}</p>
+            <ul className="space-y-2">
+              {site.emails.map((email) => (
+                <li key={email}>
+                  <a
+                    href={`mailto:${email}`}
+                    className="block text-[1.05rem] font-display text-ink hover:text-accent transition-colors"
+                  >
+                    {email}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <ul className="space-y-1">
+              {site.phones.map((phone) => (
+                <li key={phone}>
+                  <a
+                    href={telHref(phone)}
+                    className="text-[0.92rem] text-ink-soft hover:text-ink transition-colors"
+                  >
+                    {phone}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <p className="text-[0.92rem] text-ink-soft leading-relaxed">
               {site.address}
             </p>
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t hairline border-t-rule/60 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div className="mt-14 pt-6 border-t hairline border-t-rule/60 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <p className="text-[0.78rem] text-ink-muted tracking-wide">
             © {year} {site.name} Ltd. All rights reserved.
           </p>
-          <p className="text-[0.78rem] text-ink-muted tracking-wide">
-            Designed and delivered in London.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              {legalLinks.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-[0.78rem] text-ink-muted tracking-wide hover:text-ink transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="text-[0.78rem] text-ink-muted tracking-wide">
+              Designed and delivered in London.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

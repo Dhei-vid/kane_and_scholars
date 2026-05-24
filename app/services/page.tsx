@@ -1,28 +1,35 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CallToAction } from "@/components/cta";
 import { PageHero } from "@/components/page-hero";
 import { Reveal, StaggerItem, StaggerList } from "@/components/reveal";
 import { Sectors } from "@/components/sectors";
-import { approach, services } from "@/lib/site-data";
+import {
+  approach,
+  products,
+  productsIntro,
+  services,
+  servicesHero,
+  servicesIntro,
+} from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Services",
-  description:
-    "Integrated people, payroll, and project services. Six disciplines delivered as a single practice.",
+  description: servicesIntro,
 };
 
 export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Services"
+        eyebrow={servicesHero.eyebrow}
         title={
           <>
-            Integrated people, payroll &amp;{" "}
-            <span className="italic font-light">project</span> solutions.
+            {servicesHero.titleLead}{" "}
+            <span className="italic font-light">{servicesHero.titleEmphasis}</span>
           </>
         }
-        intro="Six disciplines, delivered as a single practice. Each engagement is scoped to your operating model and accountable for measurable outcomes — not just deliverables."
+        intro={servicesHero.intro}
       />
 
       <section>
@@ -51,17 +58,23 @@ export default function ServicesPage() {
 
                   <div className="md:col-span-7 md:col-start-6">
                     <p className="eyebrow mb-4">What this looks like</p>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
                       {service.capabilities.map((capability) => (
                         <li
-                          key={capability}
+                          key={capability.title}
                           className="flex gap-3 text-[0.95rem] leading-relaxed text-ink-soft"
                         >
                           <span
                             aria-hidden
                             className="mt-2 block h-px w-3 bg-accent flex-shrink-0"
                           />
-                          <span>{capability}</span>
+                          <span>
+                            <span className="font-medium text-ink">
+                              {capability.title}
+                            </span>
+                            {": "}
+                            {capability.description}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -74,6 +87,50 @@ export default function ServicesPage() {
       </section>
 
       <section className="bg-bg-elevated border-y hairline border-y-rule/60">
+        <div className="mx-auto max-w-[1280px] px-6 md:px-10 py-24 md:py-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 mb-14 md:mb-20">
+            <Reveal className="md:col-span-4">
+              <p className="eyebrow mb-5">Products</p>
+              <h2 className="display text-[clamp(2rem,4.4vw,3.25rem)]">
+                Digital products.
+              </h2>
+            </Reveal>
+            <Reveal className="md:col-span-7 md:col-start-6">
+              <p className="text-[1rem] leading-relaxed text-ink-soft">
+                {productsIntro}
+              </p>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 mt-8 text-[0.92rem] font-medium text-ink underline underline-offset-[6px] decoration-rule hover:decoration-accent decoration-2 transition-colors"
+              >
+                View all products
+                <span aria-hidden>→</span>
+              </Link>
+            </Reveal>
+          </div>
+
+          <StaggerList
+            as="ol"
+            className="grid grid-cols-1 md:grid-cols-3 gap-px bg-rule/70"
+          >
+            {products.map((product, i) => (
+              <StaggerItem key={product.id} className="bg-bg p-7 md:p-9">
+                <span className="text-[0.78rem] font-mono text-ink-muted tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="display text-[clamp(1.25rem,1.8vw,1.5rem)] mt-4 mb-3">
+                  {product.title}
+                </h3>
+                <p className="text-[0.95rem] leading-relaxed text-ink-soft">
+                  {product.description}
+                </p>
+              </StaggerItem>
+            ))}
+          </StaggerList>
+        </div>
+      </section>
+
+      <section>
         <div className="mx-auto max-w-[1280px] px-6 md:px-10 py-24 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
             <Reveal className="md:col-span-4">

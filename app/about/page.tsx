@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CallToAction } from "@/components/cta";
 import { Founder } from "@/components/founder";
+import { Team } from "@/components/team";
 import { PageHero } from "@/components/page-hero";
 import { Reveal, StaggerItem, StaggerList } from "@/components/reveal";
 import { mission, values } from "@/lib/site-data";
@@ -22,10 +23,12 @@ export default function AboutPage() {
             <span className="italic font-light">delivery</span>.
           </>
         }
-        intro="Kane & Scholars is a London-based advisory practice. We deliver disciplined people, payroll, and project solutions for organisations operating across multiple jurisdictions — combining strategic clarity with hands-on execution."
+        intro="At Kane & Scholars Resources Limited, we are a team of passionate professionals dedicated to driving business growth, leadership excellence, and entrepreneurial empowerment. Founded with a mission to transform industries, we help businesses and individuals achieve their full potential through innovative solutions, strategic consulting, and tailored training programs"
       />
 
       <Founder showCta={false} />
+
+      <Team />
 
       <section className="border-b hairline border-b-rule/60">
         <div className="mx-auto max-w-[1280px] px-6 md:px-10 py-24 md:py-32">

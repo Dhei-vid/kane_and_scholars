@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
-import { site } from "@/lib/site-data";
+import { site, telHref } from "@/lib/site-data";
 
 export function CallToAction() {
   return (
@@ -32,16 +32,33 @@ export function CallToAction() {
           >
             <div>
               <p className="eyebrow text-bg/50">Email</p>
-              <a
-                href={`mailto:${site.email}`}
-                className="block mt-1 display text-[1.35rem] text-bg hover:text-accent-soft transition-colors"
-              >
-                {site.email}
-              </a>
+              <ul className="mt-1 space-y-1">
+                {site.emails.map((email) => (
+                  <li key={email}>
+                    <a
+                      href={`mailto:${email}`}
+                      className="block display text-[1.2rem] md:text-[1.35rem] text-bg hover:text-accent-soft transition-colors"
+                    >
+                      {email}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div>
               <p className="eyebrow text-bg/50">Phone</p>
-              <p className="mt-1 text-[1.05rem] text-bg/90">{site.phone}</p>
+              <ul className="mt-1 space-y-1">
+                {site.phones.map((phone) => (
+                  <li key={phone}>
+                    <a
+                      href={telHref(phone)}
+                      className="block text-[1.05rem] text-bg/90 hover:text-accent-soft transition-colors"
+                    >
+                      {phone}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <Link

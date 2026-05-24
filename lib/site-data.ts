@@ -2,109 +2,317 @@ export const site = {
   name: "Kane & Scholars",
   shortName: "K&S",
   tagline: "People, Delivery & Change Advisory",
-  email: "advisory@kaneandscholars.com",
-  phone: "+44 (0) 20 4538 2110",
-  address: "12 Holborn Circus, London EC1N 2HJ",
+  emails: [
+    "office@ksrlimited.com.ng",
+    "f.olokpo@ksrlimited.com.ng",
+  ] as const,
+  phones: ["+234 803-390-5565", "+234 903-165-5934"] as const,
+  address: "Plot 548, 1(R) Crescent, FHA Lugbe, Abuja",
   responseTime: "Within one working day",
 } as const;
+
+/** Primary contact email (form submissions, default mailto). */
+export const siteEmail = site.emails[0];
+
+export function telHref(phone: string) {
+  return `tel:${phone.replace(/[\s()-]/g, "")}`;
+}
 
 export type NavItem = { label: string; href: string };
 
 export const nav: readonly NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Insights", href: "/insights" },
+  { label: "Products", href: "/products" },
   { label: "Contact", href: "/contact" },
 ] as const;
+
+export const legalLinks: readonly NavItem[] = [
+  { label: "FAQs", href: "/faq" },
+  { label: "Privacy policy", href: "/privacy" },
+  { label: "Terms & conditions", href: "/terms" },
+] as const;
+
+export type SocialLink = {
+  label: string;
+  href: string;
+  network: "instagram" | "facebook" | "twitter";
+};
+
+export const socialLinks: readonly SocialLink[] = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ksrlimited",
+    network: "instagram",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/ksrlimited",
+    network: "facebook",
+  },
+  {
+    label: "Twitter",
+    href: "https://twitter.com/ksrlimited",
+    network: "twitter",
+  },
+] as const;
+
+export type ServiceCapability = {
+  title: string;
+  description: string;
+};
 
 export type Service = {
   id: string;
   title: string;
   summary: string;
   detail: string;
-  capabilities: readonly string[];
+  capabilities: readonly ServiceCapability[];
 };
+
+export const servicesIntro =
+  "At Kane & Scholars, we offer a broad range of services designed to cater to the unique needs of businesses and leaders across industries. From strategy consulting to leadership development, our services are tailored to help you achieve your goals and elevate your business to new heights." as const;
+
+export const servicesHero = {
+  eyebrow: "Services",
+  titleLead: "A broad range of services for businesses",
+  titleEmphasis: "and leaders.",
+  intro:
+    "From management consultancy and leadership development to entrepreneurship support, digital solutions, training, strategic partnerships, and CSR — we help organisations and individuals build capacity, improve performance, and achieve sustainable growth.",
+} as const;
 
 export const services: Service[] = [
   {
-    id: "talent",
-    title: "Talent & HR",
-    summary: "Full lifecycle support, from hiring to performance.",
+    id: "management_consultancy",
+    title: "Management Consultancy Services",
+    summary:
+      "Strategy, market expansion, financial planning, and organisational development.",
     detail:
-      "Operating models, hiring frameworks, and performance systems built for organisations growing through complexity.",
+      "Customized strategies and operational improvements that drive growth, efficiency, and competitive advantage.",
     capabilities: [
-      "People operating-model design",
-      "Hiring strategy and executive search partnership",
-      "Performance and reward frameworks",
-      "Employee relations and policy",
+      {
+        title: "Business Strategy Development",
+        description:
+          "Create customized strategies that drive growth, improve operational efficiency, and increase competitive advantage.",
+      },
+      {
+        title: "Market Expansion Consulting",
+        description:
+          "Enter new markets with confidence, backed by in-depth research and strategic planning.",
+      },
+      {
+        title: "Financial Planning & Risk Management",
+        description:
+          "Optimize financial health and minimize risks through comprehensive planning and risk mitigation strategies.",
+      },
+      {
+        title: "Organizational Development",
+        description:
+          "Improve team performance, leadership structures, and business culture to create an environment conducive to growth.",
+      },
     ],
   },
   {
-    id: "learning",
-    title: "Learning & Development",
-    summary: "Targeted programmes aligned to strategic outcomes.",
+    id: "leadership_capacity",
+    title: "Leadership & Capacity Building",
+    summary:
+      "Executive coaching, leadership programmes, and capacity-building workshops.",
     detail:
-      "Capability mapping, leadership development, and onboarding designed against measurable business goals.",
+      "Equip leaders at every level with the skills, confidence, and vision to drive teams and organisations forward.",
     capabilities: [
-      "Capability and skills mapping",
-      "Leadership and manager development",
-      "Onboarding and role-readiness programmes",
-      "Learning measurement and ROI",
+      {
+        title: "Executive Leadership Coaching",
+        description:
+          "Personalized coaching for senior executives to strengthen decision-making and leadership capabilities.",
+      },
+      {
+        title: "Leadership Development Programs",
+        description:
+          "Equip rising leaders with the skills they need to lead with confidence and vision.",
+      },
+      {
+        title: "Women & Youth Leadership Programs",
+        description:
+          "Empowering the next generation of leaders with specialized programs designed for women and youth entrepreneurs.",
+      },
+      {
+        title: "Capacity Building Workshops",
+        description:
+          "Interactive workshops aimed at building leadership, teamwork, and problem-solving skills.",
+      },
     ],
   },
   {
-    id: "delivery",
-    title: "Project Delivery",
-    summary: "Structured programme and project execution.",
+    id: "entrepreneurship_innovation",
+    title: "Entrepreneurship & Innovation Support",
+    summary:
+      "Incubation, innovation workshops, funding access, and digital transformation for startups.",
     detail:
-      "Discovery, mobilisation and delivery of cross-functional initiatives — accountable, resourced, and on cadence.",
+      "Practical support for early-stage ventures — from mentorship and funding to digital tools that enable scale.",
     capabilities: [
-      "Programme structure and governance",
-      "Cross-functional mobilisation",
-      "Delivery assurance and recovery",
-      "Vendor and partner management",
+      {
+        title: "Business Incubation & Acceleration",
+        description:
+          "Helping early-stage startups grow with mentorship, funding advice, and practical business guidance.",
+      },
+      {
+        title: "Innovation Workshops & Hackathons",
+        description:
+          "Fostering creativity and collaborative problem-solving through interactive innovation workshops.",
+      },
+      {
+        title: "Access to Funding & Investment Networks",
+        description:
+          "Connecting entrepreneurs to key investors, funding opportunities, and resources to help them scale.",
+      },
+      {
+        title: "Digital Transformation for Startups",
+        description:
+          "Integrating digital tools to streamline operations, improve customer experience, and enhance business scalability.",
+      },
     ],
   },
   {
-    id: "change",
-    title: "Change & TUPE",
-    summary: "Restructuring and workforce transitions.",
+    id: "digital_technology",
+    title: "Digital & Technological Solutions",
+    summary:
+      "Automation, web and app development, analytics, and cybersecurity.",
     detail:
-      "Stakeholder strategy, consultation, and transfer execution that hold up to legal, operational and human scrutiny.",
+      "Technology solutions that improve efficiency, unlock insight, and protect your digital assets.",
     capabilities: [
-      "Restructure planning and consultation",
-      "TUPE in / TUPE out execution",
-      "Stakeholder communications strategy",
-      "Manager enablement during change",
+      {
+        title: "Business Automation & CRM Solutions",
+        description:
+          "Implement customer relationship management systems and automation tools that improve efficiency and productivity.",
+      },
+      {
+        title: "Website & App Development",
+        description:
+          "Design and develop responsive websites and mobile apps that align with your business goals.",
+      },
+      {
+        title: "Data Analytics & Business Intelligence",
+        description:
+          "Harness the power of data to make informed business decisions and uncover new opportunities.",
+      },
+      {
+        title: "Cybersecurity Solutions",
+        description:
+          "Secure your digital assets and ensure business continuity with robust cybersecurity measures.",
+      },
     ],
   },
   {
-    id: "payroll",
-    title: "Global Payroll",
-    summary: "Compliant payroll across jurisdictions.",
+    id: "training_development",
+    title: "Training & Professional Development",
+    summary:
+      "Corporate training, soft skills, digital skills, and industry-specific workshops.",
     detail:
-      "Vendor selection, governance, and run-state assurance for distributed workforces across the UK, EMEA and Africa.",
+      "Customized programmes that build capability across leadership, communication, and essential workplace skills.",
     capabilities: [
-      "Payroll vendor selection and transition",
-      "Multi-jurisdictional governance",
-      "Controls, reconciliation and audit readiness",
-      "Run-state assurance and remediation",
+      {
+        title: "Corporate Training Programs",
+        description:
+          "Customized training programs to enhance skills in leadership, communication, customer service, and more.",
+      },
+      {
+        title: "Soft Skills & Personal Development",
+        description:
+          "Focus on personal growth with training on time management, emotional intelligence, and conflict resolution.",
+      },
+      {
+        title: "Digital Skills Training",
+        description:
+          "Equip individuals and businesses with essential digital tools and platforms for growth.",
+      },
+      {
+        title: "Industry-Specific Workshops",
+        description:
+          "Specialized workshops tailored to the needs of specific industries such as agriculture, healthcare, and education.",
+      },
     ],
   },
   {
-    id: "consulting",
-    title: "Consulting",
-    summary: "Strategy paired with hands-on execution.",
+    id: "strategic_partnerships",
+    title: "Strategic Partnerships & Networking",
+    summary:
+      "Partnership development, events, and mentorship networks.",
     detail:
-      "Discrete advisory, fractional leadership and decision-grade diagnostics for boards and executive teams.",
+      "Connections and collaborations that extend your reach and accelerate business growth.",
     capabilities: [
-      "People function diagnostics",
-      "Fractional people leadership",
-      "Board and executive advisory",
-      "Operating-model reviews",
+      {
+        title: "Partnership Development",
+        description:
+          "Form strategic partnerships that extend your reach and increase your business capabilities.",
+      },
+      {
+        title: "Networking Events & Conferences",
+        description:
+          "Organize events to bring together industry experts, entrepreneurs, and innovators for collaboration.",
+      },
+      {
+        title: "Mentorship & Advisory Networks",
+        description:
+          "Facilitate valuable mentor-mentee relationships for business growth and personal development.",
+      },
+    ],
+  },
+  {
+    id: "csr_initiatives",
+    title: "Corporate Social Responsibility (CSR) Initiatives",
+    summary:
+      "Sustainability consulting, empowerment programmes, and community development.",
+    detail:
+      "Initiatives that create positive social impact while supporting long-term, responsible business growth.",
+    capabilities: [
+      {
+        title: "Sustainability Consulting",
+        description:
+          "Help businesses adopt eco-friendly practices and policies for long-term success.",
+      },
+      {
+        title: "Youth & Women Empowerment Programs",
+        description:
+          "Launch programs to support youth and women entrepreneurs with resources and guidance.",
+      },
+      {
+        title: "Community Development Projects",
+        description:
+          "Support initiatives that create positive social change and promote inclusive economic growth.",
+      },
     ],
   },
 ];
+
+export type Product = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export const productsIntro =
+  "We also offer a range of digital products designed to support the growth of businesses and individuals:" as const;
+
+export const products: readonly Product[] = [
+  {
+    id: "leadership_courses",
+    title: "Online Leadership Training Courses",
+    description:
+      "Interactive, self-paced courses designed to build leadership capabilities.",
+  },
+  {
+    id: "business_templates",
+    title: "Business Templates & Guides",
+    description:
+      "Practical tools like business planning templates, marketing strategy guides, and financial models to streamline business operations.",
+  },
+  {
+    id: "books_ebooks",
+    title: "Books & E-Books",
+    description:
+      "Expert resources on leadership, entrepreneurship, and business management.",
+  },
+] as const;
 
 export const sectors = [
   "Fintech",
@@ -147,110 +355,149 @@ export type Value = { title: string; description: string };
 export const values: readonly Value[] = [
   {
     title: "Integrity",
-    description: "Transparency, trust, and ethical delivery at every step.",
+    description:
+      "We build trust by being reliable, dependable, and consistent in our words and actions.",
   },
   {
-    title: "Professionalism",
-    description: "Rigour, reliability, and consistently high standards.",
+    title: "Leadership",
+    description:
+      "We empower individuals to take ownership and make decisions, fostering a culture of accountability and responsibility.",
   },
   {
-    title: "Commitment",
-    description: "Ownership of outcomes, not just activity.",
+    title: "Professionality",
+    description:
+      "We demonstrate expertise and proficiency in our field, staying up to date with the latest trends, research, and best practices.",
   },
   {
-    title: "Accountability",
-    description: "Responsibility for results — visible and measurable.",
+    title: "Collaboration",
+    description:
+      "We treat others with respect and dignity, valuing diverse perspectives and opinions.",
   },
   {
-    title: "Client Focus",
-    description: "Service, partnership, and meaningful value creation.",
+    title: "Agility",
+    description:
+      "We are resilient and able to navigate ambiguity, uncertainty, and change, maintaining our focus and commitment to delivering exceptional results.",
   },
   {
-    title: "Solution-led",
-    description: "From advice to execution, never one without the other.",
+    title: "Learning",
+    description:
+      "We are committed to continuous learning and improvement, seeking opportunities to develop new skills, knowledge, and expertise.",
   },
 ] as const;
 
 export const mission = {
   mission:
-    "To deploy compliant, effective people, payroll, and project solutions that address complex organisational challenges while enhancing performance, resilience, and long-term value.",
+    "To deliver high-quality, practical, and result-driven consulting services that enable our clients to achieve operational excellence, business growth, and long-term sustainability.",
   vision:
-    "To be a trusted advisory partner enabling organisations to operate efficiently, manage change effectively, and scale responsibly — regardless of geography.",
+    "To be a trusted partner in transforming organizations and empowering people through cutting-edge training, advisory, and consulting solutions.",
 } as const;
 
-export type Insight = {
+export type Faq = {
   id: string;
-  category: string;
-  title: string;
-  excerpt: string;
-  readTime: string;
-  date: string;
+  question: string;
+  answer: string;
 };
 
-export const insights: Insight[] = [
+export const faqHero = {
+  eyebrow: "FAQs",
+  titleLead: "Questions we hear",
+  titleEmphasis: "often.",
+  intro:
+    "Quick answers about our services, digital products, who we work with, and how to get started.",
+} as const;
+
+export const faqs: readonly Faq[] = [
   {
-    id: "multi-jurisdictional-growth",
-    category: "People Strategy",
-    title: "Navigating workforce complexity in multi-jurisdictional growth",
-    excerpt:
-      "What it actually takes to operate a coherent people function across three or more legal entities.",
-    readTime: "6 min read",
-    date: "April 2026",
+    id: "what-we-do",
+    question: "What does Kane & Scholars do?",
+    answer:
+      "We are an education-led advisory practice helping businesses and leaders grow through management consulting, leadership and capacity building, entrepreneurship support, digital solutions, training, strategic partnerships, and CSR initiatives — with a strong focus on MSMEs, women, and youth-led enterprises across Africa.",
   },
   {
-    id: "hidden-costs-change",
-    category: "Organisational Change",
-    title: "The hidden costs of poor change management",
-    excerpt:
-      "Why most transformations underperform — and the four levers leadership teams routinely ignore.",
-    readTime: "8 min read",
-    date: "March 2026",
+    id: "services-offered",
+    question: "What services do you offer?",
+    answer:
+      "Our services span seven areas: management consultancy, leadership and capacity building, entrepreneurship and innovation support, digital and technological solutions, training and professional development, strategic partnerships and networking, and corporate social responsibility. Visit our Services page for full detail on each offering.",
   },
   {
-    id: "resilient-hr-models",
-    category: "HR Transformation",
-    title: "Building resilient HR operating models for scale",
-    excerpt:
-      "An operating-model lens for People functions moving from start-up scrappy to scale-up rigour.",
-    readTime: "7 min read",
-    date: "February 2026",
+    id: "digital-products",
+    question: "Do you offer digital products?",
+    answer:
+      "Yes. We provide online leadership training courses, business templates and guides, and books and e-books on leadership, entrepreneurship, and business management. See our Products page to learn more.",
   },
   {
-    id: "payroll-as-advantage",
-    category: "Payroll & Compliance",
-    title: "Global payroll: compliance as competitive advantage",
-    excerpt:
-      "Why payroll governance belongs on the board agenda, not in a spreadsheet at the bottom of finance.",
-    readTime: "5 min read",
-    date: "January 2026",
+    id: "who-we-work-with",
+    question: "Who do you work with?",
+    answer:
+      "We partner with organisations and individuals at different stages of growth — from early-stage startups and MSMEs to established businesses. We have particular experience supporting women and youth-led enterprises.",
   },
   {
-    id: "responsibility-and-change",
-    category: "Organisational Change",
-    title: "Change fails when responsibility is abstract",
-    excerpt:
-      "Most failed change isn't about resistance — it's about responsibility that nobody actually holds.",
-    readTime: "7 min read",
-    date: "December 2025",
+    id: "location",
+    question: "Where are you based?",
+    answer: `Our office is at ${site.address}. We work with clients locally and internationally, combining in-person and remote delivery where appropriate.`,
   },
   {
-    id: "stability-over-strategy",
-    category: "People Strategy",
-    title: "Why people and payroll stability matter more than strategy during change",
-    excerpt:
-      "Stability in core people operations is the foundation that lets strategic change actually land.",
-    readTime: "8 min read",
-    date: "November 2025",
+    id: "getting-started",
+    question: "How do I get started?",
+    answer:
+      "Most engagements begin with a short, confidential conversation. Contact us by email or phone, or send a message through our contact form. We will respond within one working day to understand your needs and outline next steps.",
   },
-];
+  {
+    id: "engagement-model",
+    question: "How do you typically work with clients?",
+    answer:
+      "We follow a three-step model: Understand your context and goals, Design solutions aligned to your strategy and resources, then Deliver with clear accountability for outcomes. Scope, fees, and timelines are agreed before work begins.",
+  },
+  {
+    id: "response-time",
+    question: "How quickly will you respond to an enquiry?",
+    answer: `We aim to respond within ${site.responseTime.toLowerCase()} of receiving your message.`,
+  },
+] as const;
+
+export type TeamMember = {
+  id: string;
+  role: string;
+  expertise?: string;
+};
+
+export const teamIntro = {
+  eyebrow: "Our team",
+  title: "Meet our team of experts.",
+  intro:
+    "Experienced consultants and advisors bringing depth across training, business advisory, and management consulting.",
+} as const;
+
+export const team: readonly TeamMember[] = [
+  {
+    id: "managing_director",
+    role: "Managing Director",
+    expertise: "Training Management",
+  },
+  {
+    id: "senior_consultant",
+    role: "Senior Consultant",
+    expertise: "Business Advisory",
+  },
+  {
+    id: "consultant",
+    role: "Consultant",
+    expertise: "Management Consulting",
+  },
+  {
+    id: "principal_consultant",
+    role: "Principal Consultant",
+  },
+] as const;
 
 export const founder = {
-  name: "Adaeze Kane",
+  name: "Fejiro Olokpo",
   role: "Founder & Principal Consultant",
   bio: [
-    "Kane & Scholars is led by Adaeze Kane, a London-based people and operations practitioner with a track record across global payroll governance, regulated transformation, and execution-led HR within fintech and professional services.",
-    "Her work spans engagements across the United Kingdom, EMEA and Africa — partnering with leadership teams navigating growth, regulatory complexity, and operational change. She combines strategic insight with disciplined delivery so that people, payroll and change initiatives are implemented with rigour and long-term value in mind.",
-    "Her role is not simply to advise, but to partner with leaders so that delivery holds — through clear structure, shared accountability, and informed decision-making.",
+    "Kane & Scholars is led by Fejiro Olokpo, an education-led and innovation-focused organization dedicated to developing entrepreneurs and strengthening MSMEs across Africa",
+    "We provide tailored training manage, business advisory and management consulting services that help individuals and organizations build capacity, improve performance and achieve sustainable growth.",
+    "At KSR, we are committed to shaping future-ready businesses that can innovate, scale and thrive",
+    "Our services focus on leadership development, entrepreneurship, and technological integration, ensuring that your business stays competitive in a fast-paced world. We specialize in working with women and youth-led enterprises, providing them with the resources and support needed to succeed"
   ],
   credentials: [
     { label: "Years in practice", value: "14+" },

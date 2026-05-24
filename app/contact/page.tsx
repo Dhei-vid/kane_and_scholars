@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
+import { FaqList } from "@/components/faq-list";
 import { PageHero } from "@/components/page-hero";
 import { Reveal, StaggerItem, StaggerList } from "@/components/reveal";
-import { site } from "@/lib/site-data";
+import { site, telHref } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,12 +11,29 @@ export const metadata: Metadata = {
     "Speak with a Kane & Scholars consultant about your people, payroll, or transformation priorities.",
 };
 
-const channels = [
-  { label: "Email", value: site.email, href: `mailto:${site.email}` },
-  { label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/\s+/g, "")}` },
+type ChannelLink = { value: string; href: string };
+type Channel =
+  | { label: string; links: readonly ChannelLink[] }
+  | { label: string; value: string };
+
+const channels: readonly Channel[] = [
+  {
+    label: "Email",
+    links: site.emails.map((email) => ({
+      value: email,
+      href: `mailto:${email}`,
+    })),
+  },
+  {
+    label: "Phone",
+    links: site.phones.map((phone) => ({
+      value: phone,
+      href: telHref(phone),
+    })),
+  },
   { label: "Office", value: site.address },
   { label: "Response time", value: site.responseTime },
-] as const;
+];
 
 export default function ContactPage() {
   return (
@@ -51,18 +69,22 @@ export default function ContactPage() {
                       <p className="text-[0.78rem] tracking-[0.18em] uppercase text-ink-muted">
                         {channel.label}
                       </p>
-                      <p className="col-span-2 text-[1rem] text-ink">
-                        {"href" in channel && channel.href ? (
-                          <a
-                            href={channel.href}
-                            className="hover:text-accent transition-colors"
-                          >
-                            {channel.value}
-                          </a>
+                      <div className="col-span-2 text-[1rem] text-ink space-y-1">
+                        {"links" in channel ? (
+                          channel.links.map((link) => (
+                            <p key={link.href}>
+                              <a
+                                href={link.href}
+                                className="hover:text-accent transition-colors"
+                              >
+                                {link.value}
+                              </a>
+                            </p>
+                          ))
                         ) : (
-                          channel.value
+                          <p>{channel.value}</p>
                         )}
-                      </p>
+                      </div>
                     </StaggerItem>
                   ))}
                 </StaggerList>
@@ -78,6 +100,26 @@ export default function ContactPage() {
             <Reveal delay={0.1} className="md:col-span-7">
               <p className="eyebrow mb-6">Send a message</p>
               <ContactForm />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-bg-elevated border-y hairline border-y-rule/60">
+        <div className="mx-auto max-w-[1280px] px-6 md:px-10 py-20 md:py-28">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+            <Reveal className="md:col-span-4">
+              <p className="eyebrow mb-4">FAQs</p>
+              <h2 className="display text-[clamp(1.65rem,3vw,2.25rem)]">
+                Common questions.
+              </h2>
+              <p className="mt-5 text-[1rem] leading-relaxed text-ink-soft">
+                Answers about our services, products, and how we work with
+                clients.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1} className="md:col-span-7 md:col-start-6">
+              <FaqList limit={4} showViewAllLink />
             </Reveal>
           </div>
         </div>

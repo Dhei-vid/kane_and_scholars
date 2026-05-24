@@ -11,18 +11,17 @@ export function Hero() {
               <div className="flex items-center gap-3 mb-10">
                 <span aria-hidden className="block w-10 h-px bg-accent/80" />
                 <p className="eyebrow text-accent">
-                  Advisory · London &amp; Lagos
+                  Advisory · &amp; Abuja
                 </p>
               </div>
             </Reveal>
 
             <Reveal immediate delay={0.1}>
               <h1 className="display text-[clamp(2.6rem,7.2vw,5.75rem)]">
-                People, payroll, and{" "}
-                <span className="italic font-light">change</span>
-                <span className="text-accent">—</span>
+                Driving Growth, and{" "}
+                <span className="italic font-light">Shaping Leaders</span>
                 <br className="hidden md:block" />
-                delivered with precision.
+                Creating Lasting Impact.
               </h1>
             </Reveal>
 

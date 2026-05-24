@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal, StaggerItem, StaggerList } from "@/components/reveal";
-import { services } from "@/lib/site-data";
+import { services, servicesIntro } from "@/lib/site-data";
 
 type ServicesProps = {
   showCta?: boolean;
@@ -14,12 +14,11 @@ export function Services({ showCta = true }: ServicesProps) {
           <Reveal className="md:col-span-4">
             <p className="eyebrow mb-5">Our practice</p>
             <h2 className="display text-[clamp(2rem,4.4vw,3.25rem)]">
-              An integrated operating model
+              Services that scale with you
               <span className="text-accent">.</span>
             </h2>
             <p className="mt-6 text-[1rem] leading-relaxed text-ink-soft max-w-sm">
-              Six disciplines, delivered as a single practice — so people,
-              payroll, and project work land together rather than collide.
+              {servicesIntro}
             </p>
 
             {showCta && (
@@ -51,7 +50,7 @@ export function Services({ showCta = true }: ServicesProps) {
                       {service.title}
                     </h3>
                     <p className="text-[0.95rem] leading-relaxed text-ink-soft">
-                      {service.detail}
+                      {service.summary}
                     </p>
                   </div>
                 </div>
