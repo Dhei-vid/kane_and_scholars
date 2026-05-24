@@ -98,8 +98,10 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.1} className="md:col-span-7">
-              <p className="eyebrow mb-6">Send a message</p>
-              <ContactForm />
+              <div id="send-message">
+                <p className="eyebrow mb-6">Send a message</p>
+                <ContactForm />
+              </div>
             </Reveal>
           </div>
         </div>

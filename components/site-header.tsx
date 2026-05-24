@@ -36,6 +36,7 @@ const itemVariants: Variants = {
 export function SiteHeader() {
   const pathname = usePathname() ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
+  const onContactPage = pathname === "/contact";
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -76,10 +77,14 @@ export function SiteHeader() {
         </nav>
 
         <Link
-          href="/contact"
-          className="hidden md:inline-flex items-center gap-2 text-[0.86rem] font-medium text-bg bg-ink rounded-full px-4 py-2 hover:bg-accent transition-colors duration-300"
+          href={onContactPage ? "#send-message" : "/contact"}
+          className={`hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-[0.86rem] font-medium transition-colors duration-300 ${
+            onContactPage
+              ? "border hairline border-rule/80 text-ink hover:border-accent hover:text-accent bg-transparent"
+              : "text-bg bg-ink hover:bg-accent"
+          }`}
         >
-          Speak with us
+          {onContactPage ? "Send a message" : "Contact us"}
           <span aria-hidden className="translate-y-[-1px]">→</span>
         </Link>
 
@@ -150,10 +155,15 @@ export function SiteHeader() {
 
               <motion.div variants={itemVariants} className="mt-5">
                 <Link
-                  href="/contact"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-[0.92rem] font-medium text-bg hover:bg-accent transition-colors duration-300"
+                  href={onContactPage ? "#send-message" : "/contact"}
+                  onClick={() => setMenuOpen(false)}
+                  className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-[0.92rem] font-medium transition-colors duration-300 ${
+                    onContactPage
+                      ? "border hairline border-rule/80 text-ink hover:border-accent"
+                      : "bg-ink text-bg hover:bg-accent"
+                  }`}
                 >
-                  Speak with us
+                  {onContactPage ? "Send a message" : "Contact us"}
                   <span aria-hidden>→</span>
                 </Link>
               </motion.div>
