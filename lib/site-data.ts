@@ -36,24 +36,19 @@ export const legalLinks: readonly NavItem[] = [
 export type SocialLink = {
   label: string;
   href: string;
-  network: "instagram" | "facebook" | "twitter";
+  network: "instagram" | "facebook";
 };
 
 export const socialLinks: readonly SocialLink[] = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/ksrlimited",
+    href: "https://www.instagram.com/ksr_1968",
     network: "instagram",
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/ksrlimited",
+    href: "https://www.facebook.com/people/Kane-Scholars-Resources/61584348282489/",
     network: "facebook",
-  },
-  {
-    label: "Twitter",
-    href: "https://twitter.com/ksrlimited",
-    network: "twitter",
   },
 ] as const;
 

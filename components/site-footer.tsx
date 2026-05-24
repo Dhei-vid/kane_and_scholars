@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { SocialIcon } from "@/components/social-icons";
+import { SocialLinks } from "@/components/social-links";
 import { Wordmark } from "@/components/wordmark";
-import { legalLinks, nav, site, socialLinks, telHref } from "@/lib/site-data";
+import { legalLinks, nav, site, telHref } from "@/lib/site-data";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -17,29 +17,9 @@ export function SiteFooter() {
               regulatory change, and the operational realities of building a
               durable people function.
             </p>
-            <p className="text-[0.78rem] tracking-wide text-ink-muted">
-              Registered in England &amp; Wales · Company No. 14582033
-            </p>
             <div>
               <p className="eyebrow mb-3">Follow us</p>
-              <ul className="flex items-center gap-2">
-                {socialLinks.map((item) => (
-                  <li key={item.network}>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={item.label}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border hairline border-rule/80 text-ink-soft hover:text-ink hover:border-accent transition-colors duration-300"
-                    >
-                      <SocialIcon
-                        network={item.network}
-                        className="h-[1.05rem] w-[1.05rem]"
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <SocialLinks />
             </div>
           </div>
 
