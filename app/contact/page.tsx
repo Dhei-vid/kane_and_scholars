@@ -58,7 +58,7 @@ export default function ContactPage() {
 
                 <StaggerList
                   as="div"
-                  className="divide-y hairline divide-rule/70 border-y hairline border-y-rule/70"
+                  className="divide-y divide-rule/70 border-y hairline border-y-rule/70"
                 >
                   {channels.map((channel) => (
                     <StaggerItem

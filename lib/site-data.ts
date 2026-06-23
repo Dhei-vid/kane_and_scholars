@@ -302,8 +302,8 @@ export const products: readonly Product[] = [
       "Practical tools like business planning templates, marketing strategy guides, and financial models to streamline business operations.",
   },
   {
-    id: "books_ebooks",
-    title: "Books & E-Books",
+    id: "books",
+    title: "Books",
     description:
       "Expert resources on leadership, entrepreneurship, and business management.",
   },
@@ -418,7 +418,7 @@ export const faqs: readonly Faq[] = [
     id: "digital-products",
     question: "Do you offer digital products?",
     answer:
-      "Yes. We provide online leadership training courses, business templates and guides, and books and e-books on leadership, entrepreneurship, and business management. See our Products page to learn more.",
+      "Yes. We provide online leadership training courses, business templates and guides, and books on leadership, entrepreneurship, and business management. We don't run an online store, so browse the Products page, then reach out and we'll arrange access.",
   },
   {
     id: "who-we-work-with",
@@ -441,7 +441,19 @@ export const faqs: readonly Faq[] = [
     id: "engagement-model",
     question: "How do you typically work with clients?",
     answer:
-      "We follow a three-step model: Understand your context and goals, Design solutions aligned to your strategy and resources, then Deliver with clear accountability for outcomes. Scope, fees, and timelines are agreed before work begins.",
+      "We follow a three-step model: Understand your context and goals, Design solutions aligned to your strategy and resources, then Deliver with clear accountability for outcomes. Scope, fees, and timelines — which vary from a single workshop to a multi-month programme — are agreed before work begins.",
+  },
+  {
+    id: "pricing",
+    question: "How much do your services cost?",
+    answer:
+      "Fees depend on the scope, duration, and complexity of the engagement, so we don't publish flat rates. After an initial conversation to understand your needs, we put together a proposal with clear scope, fees, and timelines before any work begins.",
+  },
+  {
+    id: "confidentiality",
+    question: "Will information I share with you be kept confidential?",
+    answer:
+      "Yes. Initial conversations and ongoing engagements are treated as confidential, and we agree any specific confidentiality or data-handling terms with you before sensitive information is shared.",
   },
   {
     id: "response-time",
