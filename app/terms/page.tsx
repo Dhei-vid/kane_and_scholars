@@ -14,7 +14,7 @@ const sections = [
   {
     title: "Agreement",
     paragraphs: [
-      `These terms and conditions (“Terms”) govern your use of the website operated by ${site.name} Ltd (Company No. 14582033) (“we”, “us”, or “our”). By accessing or using this website, you agree to these Terms.`,
+      `These terms and conditions (“Terms”) govern your use of the website operated by ${site.name} Ltd (“we”, “us”, or “our”). By accessing or using this website, you agree to these Terms.`,
       "If you engage us for advisory, training, digital products, or other services, separate contractual terms will apply to that engagement and will prevail where they conflict with these Terms.",
     ],
   },
@@ -55,7 +55,7 @@ const sections = [
   {
     title: "Governing law",
     paragraphs: [
-      "These Terms are governed by the laws of England and Wales. The courts of England and Wales have exclusive jurisdiction over disputes arising from or relating to these Terms and use of this website, subject to any mandatory rights you may have under applicable consumer law.",
+      "These Terms are governed by the laws of Abuja, Nigeria. The courts of Abuja have exclusive jurisdiction over disputes arising from or relating to these Terms and use of this website, subject to any mandatory rights you may have under applicable consumer law.",
     ],
   },
   {

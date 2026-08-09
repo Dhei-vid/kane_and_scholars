@@ -89,7 +89,7 @@ export function SiteFooter() {
               ))}
             </ul>
             <p className="text-[0.78rem] text-ink-muted tracking-wide">
-              Designed and delivered in London.
+              Designed and delivered in Abuja.
             </p>
           </div>
         </div>

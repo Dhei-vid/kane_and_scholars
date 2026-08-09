@@ -9,7 +9,7 @@ import { mission, values } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Kane & Scholars is a London-based advisory practice delivering people, payroll, and project solutions for organisations navigating growth and change.",
+    "Kane & Scholars is an Abuja-based advisory practice delivering people, payroll, and project solutions for organisations navigating growth and change.",
 };
 
 export default function AboutPage() {

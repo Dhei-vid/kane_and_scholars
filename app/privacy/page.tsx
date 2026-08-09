@@ -14,7 +14,7 @@ const sections = [
   {
     title: "Who we are",
     paragraphs: [
-      `${site.name} Ltd (“we”, “us”, or “our”) is registered in England and Wales (Company No. 14582033). Our registered office is at ${site.address}.`,
+      `${site.name} Ltd (“we”, “us”, or “our”) is registered in Abuja, Nigeria. Our registered office is at ${site.address}.`,
       `For data protection enquiries, contact us at ${siteEmail} or ${site.emails[1]}.`,
     ],
   },
@@ -29,7 +29,7 @@ const sections = [
     title: "How we use your data",
     paragraphs: [
       "We use personal data to respond to enquiries, provide advisory and related services, improve our website, send relevant communications (where permitted), and meet legal or regulatory obligations.",
-      "Our lawful bases under UK GDPR may include consent, contractual necessity, legitimate interests in operating and developing our business, and compliance with legal duties.",
+      "Our lawful bases under Nigerian GDPR may include consent, contractual necessity, legitimate interests in operating and developing our business, and compliance with legal duties.",
     ],
   },
   {
@@ -42,7 +42,7 @@ const sections = [
   {
     title: "Your rights",
     paragraphs: [
-      "Under UK data protection law, you may have rights to access, rectify, erase, restrict or object to processing, data portability, and to withdraw consent where processing is based on consent.",
+      "Under Nigerian data protection law, you may have rights to access, rectify, erase, restrict or object to processing, data portability, and to withdraw consent where processing is based on consent.",
       "You may lodge a complaint with the Information Commissioner’s Office (ICO). We encourage you to contact us first so we can address your concerns.",
     ],
   },
@@ -50,7 +50,7 @@ const sections = [
     title: "Security and international transfers",
     paragraphs: [
       "We implement appropriate technical and organisational measures to protect personal data. No method of transmission over the internet is completely secure.",
-      "If we transfer data outside the UK, we will ensure appropriate safeguards are in place as required by applicable law.",
+      "If we transfer data outside Nigeria, we will ensure appropriate safeguards are in place as required by applicable law.",
     ],
   },
   {
