@@ -11,7 +11,7 @@ export function Hero() {
               <div className="flex items-center gap-3 mb-10">
                 <span aria-hidden className="block w-10 h-px bg-accent/80" />
                 <p className="eyebrow text-accent">
-                  Advisory · &amp; Abuja
+                  Advisory
                 </p>
               </div>
             </Reveal>
